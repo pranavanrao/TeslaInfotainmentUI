@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>BottomBar.qml</file>
+        <file>LeftBar.qml</file>
+        <file>RightBar.qml</file>
+    </qresource>
+    <qresource prefix="/assets">
+        <file>myCar.jpg</file>
+    </qresource>
+</RCC>
