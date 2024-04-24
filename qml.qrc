@@ -7,5 +7,8 @@
     </qresource>
     <qresource prefix="/assets">
         <file>myCar.jpg</file>
+        <file>carIcon.png</file>
+        <file>lock.png</file>
+        <file>unlock.png</file>
     </qresource>
 </RCC>

@@ -13,7 +13,7 @@ Rectangle {
         id: myCar
         source: "qrc:/assets/myCar.jpg"
         anchors.centerIn: parent
-        width: parent.width * 3/4
-        height: width
+        width: parent.width * .85
+        fillMode: Image.PreserveAspectFit
     }
 }

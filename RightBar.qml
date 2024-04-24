@@ -24,4 +24,16 @@ Rectangle {
         center: QtPositioning.coordinate(12.97, 77.59) // Bengaluru
         zoomLevel: 14
     }
+
+    Image {
+        id: lockIcon
+        source: "qrc:/assets/lock.png"
+        anchors {
+            left: parent.left
+            top: parent.top
+            margins: 20
+        }
+        width: parent.width / 40
+        fillMode: Image.PreserveAspectFit
+    }
 }
