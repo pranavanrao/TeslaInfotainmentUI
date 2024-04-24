@@ -25,9 +25,12 @@ Rectangle {
         zoomLevel: 14
     }
 
+    property url iconLock: "qrc:/assets/lock.png"
+    property url iconUnlock: "qrc:/assets/unlock.png"
+
     Image {
         id: lockIcon
-        source: "qrc:/assets/lock.png"
+        source: (systemHandler.carLocked ? iconLock : iconUnlock)
         anchors {
             left: parent.left
             top: parent.top
@@ -35,5 +38,21 @@ Rectangle {
         }
         width: parent.width / 40
         fillMode: Image.PreserveAspectFit
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                if (parent.source == iconLock) {
+                    parent.source = iconUnlock
+                } else {
+                    parent.source = iconLock
+                }
+            }
+        }
+    }
+
+    Text {
+        id: userName
+        text: systemHandler.userName
     }
 }

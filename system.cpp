@@ -1,22 +1,20 @@
 #include "system.h"
 
 System::System(QObject *parent)
-    : QObject{parent}
-{
+    : QObject{parent}, m_carLocked(false), m_carTemp(64), m_userName("Pranav Rao")
+{}
 
+bool System::carLocked() const
+{
+    return m_carLocked;
 }
 
-bool System::carLocake() const
+void System::setCarLocked(bool newCarLocked)
 {
-    return m_carLocaked;
-}
-
-void System::setcarLocake(bool newCarLocaked)
-{
-    if (m_carLocaked == newCarLocaked)
+    if (m_carLocked == newCarLocked)
         return;
-    m_carLocaked = newCarLocaked;
-    emit carLocakeChanged();
+    m_carLocked = newCarLocked;
+    emit carLockedChanged();
 }
 
 int System::carTemp() const
