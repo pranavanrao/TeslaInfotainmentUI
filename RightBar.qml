@@ -1,5 +1,5 @@
 import QtQuick 2.12
-import QtQuick.Window 2.14
+import QtQuick.Window 2.12
 import QtLocation 5.12
 import QtPositioning 5.12
 
@@ -30,7 +30,7 @@ Rectangle {
 
     Image {
         id: lockIcon
-        source: (systemHandler.carLocked ? iconLock : iconUnlock)
+        source: (system.carLocked ? iconLock : iconUnlock)
         anchors {
             left: parent.left
             top: parent.top
@@ -42,10 +42,10 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                if (parent.source == iconLock) {
-                    parent.source = iconUnlock
+                if (lockIcon.source == iconLock) {
+                    lockIcon.source = iconUnlock
                 } else {
-                    parent.source = iconLock
+                    lockIcon.source = iconLock
                 }
             }
         }
@@ -53,6 +53,37 @@ Rectangle {
 
     Text {
         id: userName
-        text: systemHandler.userName
+        text: system.userName
+        anchors {
+            left: lockIcon.right
+            top: parent.top
+            margins: 20
+        }
+        font.pointSize: 10
+    }
+
+    Image {
+        id: temperatureIcon
+        source: "qrc:/assets/thermometer.png"
+        width: parent.width / 30
+        fillMode: Image.PreserveAspectFit
+
+        anchors {
+            left: userName.right
+            top: parent.top
+            margins: 20
+        }
+    }
+
+    Text {
+        id: tempText
+        text: system.carTemp
+        font.pointSize: 10
+
+        anchors {
+            left: temperatureIcon.right
+            top: parent.top
+            topMargin: 20
+        }
     }
 }

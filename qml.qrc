@@ -10,5 +10,6 @@
         <file>carIcon.png</file>
         <file>lock.png</file>
         <file>unlock.png</file>
+        <file>thermometer.png</file>
     </qresource>
 </RCC>

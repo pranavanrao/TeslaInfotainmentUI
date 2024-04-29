@@ -1,7 +1,7 @@
 #include "system.h"
 
 System::System(QObject *parent)
-    : QObject{parent}, m_carLocked(false), m_carTemp(64), m_userName("Pranav Rao")
+    : QObject{parent}, m_carLocked(false), m_carTemp(64), m_userName("Pranav")
 {}
 
 bool System::carLocked() const
