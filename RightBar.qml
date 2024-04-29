@@ -10,8 +10,10 @@ Rectangle {
         right: parent.right
         bottom: bottomBar.top
     }
-    color: "orange"
     width: parent.width * 2/3
+
+    property url iconLock: "qrc:/assets/lock.png"
+    property url iconUnlock: "qrc:/assets/unlock.png"
 
     Plugin {
         id: mapPlugin
@@ -25,65 +27,79 @@ Rectangle {
         zoomLevel: 14
     }
 
-    property url iconLock: "qrc:/assets/lock.png"
-    property url iconUnlock: "qrc:/assets/unlock.png"
+    Rectangle {
+        width: 300
+        height: 60
+        radius: 10
+        color: "#FFFFFF"
+        opacity: 0.6
 
-    Image {
-        id: lockIcon
-        source: (system.carLocked ? iconLock : iconUnlock)
+        border.color: "#EAECEE"
+        border.width: 5
+
         anchors {
-            left: parent.left
-            top: parent.top
-            margins: 20
+            top: root.top
+            left: root.left
+            margins: 10
         }
-        width: parent.width / 40
-        fillMode: Image.PreserveAspectFit
 
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                if (lockIcon.source == iconLock) {
-                    lockIcon.source = iconUnlock
-                } else {
-                    lockIcon.source = iconLock
+        Image {
+            id: lockIcon
+            source: (system.carLocked ? iconLock : root.iconUnlock)
+            anchors {
+                left: parent.left
+                top: parent.top
+                margins: 20
+            }
+            width: parent.width * 0.08
+            fillMode: Image.PreserveAspectFit
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    if (lockIcon.source == root.iconLock) {
+                        lockIcon.source = root.iconUnlock
+                    } else {
+                        lockIcon.source = root.iconLock
+                    }
                 }
             }
         }
-    }
 
-    Text {
-        id: userName
-        text: system.userName
-        anchors {
-            left: lockIcon.right
-            top: parent.top
-            margins: 20
+        Text {
+            id: userName
+            text: system.userName
+            anchors {
+                left: lockIcon.right
+                top: parent.top
+                margins: 20
+            }
+            font.pointSize: 10
         }
-        font.pointSize: 10
-    }
 
-    Image {
-        id: temperatureIcon
-        source: "qrc:/assets/thermometer.png"
-        width: parent.width / 30
-        fillMode: Image.PreserveAspectFit
+        Image {
+            id: temperatureIcon
+            source: "qrc:/assets/thermometer.png"
+            width: parent.width * 0.1
+            fillMode: Image.PreserveAspectFit
 
-        anchors {
-            left: userName.right
-            top: parent.top
-            margins: 20
+            anchors {
+                left: userName.right
+                top: parent.top
+                margins: 20
+            }
         }
-    }
 
-    Text {
-        id: tempText
-        text: system.carTemp
-        font.pointSize: 10
+        Text {
+            id: tempText
+            text: system.carTemp
+            font.pointSize: 10
 
-        anchors {
-            left: temperatureIcon.right
-            top: parent.top
-            topMargin: 20
+            anchors {
+                left: temperatureIcon.right
+                top: parent.top
+                topMargin: 20
+            }
         }
     }
 }
