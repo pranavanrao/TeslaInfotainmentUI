@@ -23,7 +23,7 @@ Rectangle {
     Map {
         anchors.fill: parent
         plugin: mapPlugin
-        center: QtPositioning.coordinate(12.97, 77.59) // Bengaluru
+        center: QtPositioning.coordinate(16.20, 77.37) // Raichur
         zoomLevel: 14
     }
 
